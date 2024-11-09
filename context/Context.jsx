@@ -9,15 +9,18 @@ const ContextProvider = ({children})=>{
     const [response, setResponse] = useState("")
     const [showResult, setShowResult] = useState(false)
     const [loading, setloading] = useState(false);
+    const [prevPrompt, setPrevPrompt] = useState("");
 
     const onSent = async (input)=>{
 
         setResponse("");
+        setPrevPrompt(input);
         setloading(true);
         setShowResult(true);
         const result = await run(input);
         setResponse(result);
         setloading(false);
+        // setPrevPrompt(""); 
     }
     // onSent(input)
 
@@ -29,6 +32,7 @@ const ContextProvider = ({children})=>{
         response,
         showResult,
         setShowResult,
+        prevPrompt,
     }
 
     return (
