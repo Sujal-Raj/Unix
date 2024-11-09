@@ -3,12 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Context } from '../context/Context'
+import Navbar from './Components/Navbar'
 // import run from './config/gemini'
 
 
 function App() {
   
-  const {onSent,input,setInput} = useContext(Context);
+  const {onSent,input,setInput,response} = useContext(Context);
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <>
-    <h1>AI chatbot</h1>
+    <Navbar/>
       <input 
       value={input}
       onChange={(e)=>setInput(e.target.value)}

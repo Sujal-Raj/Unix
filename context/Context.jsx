@@ -7,11 +7,17 @@ const ContextProvider = ({children})=>{
 
     const [input, setInput] = useState("")
     const [response, setResponse] = useState("")
+    const [showResult, setShowResult] = useState(false)
+    const [loading, setloading] = useState(false);
 
     const onSent = async (input)=>{
+
         setResponse("");
+        setloading(true);
+        setShowResult(true);
         const result = await run(input);
         setResponse(result);
+        setloading(false);
     }
     // onSent(input)
 
@@ -21,6 +27,8 @@ const ContextProvider = ({children})=>{
         setInput,
         onSent,
         response,
+        showResult,
+        setShowResult,
     }
 
     return (
