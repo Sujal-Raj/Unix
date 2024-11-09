@@ -6,9 +6,12 @@ export const Context = createContext();
 const ContextProvider = ({children})=>{
 
     const [input, setInput] = useState("")
+    const [response, setResponse] = useState("")
 
     const onSent = async (input)=>{
-        await run(input);
+        setResponse("");
+        const result = await run(input);
+        setResponse(result);
     }
     // onSent(input)
 
@@ -17,6 +20,7 @@ const ContextProvider = ({children})=>{
         input,
         setInput,
         onSent,
+        response,
     }
 
     return (

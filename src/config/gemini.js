@@ -7,7 +7,8 @@ import {
   } from "@google/generative-ai";
   
 //   const apiKey = process.env.GEMINI_API_KEY;
-  const apiKey = "AIzaSyCYfGBygSTXnz0EYUtIkInQ_DcVDMcPZgw";
+// const apiKey = "";
+  const apiKey = import.meta.env.API_KEY;
   const genAI = new GoogleGenerativeAI(apiKey);
 
   
@@ -31,7 +32,8 @@ import {
     });
   
     const result = await chatSession.sendMessage(toSearchInput);
-    console.log(result.response.text());
+    // console.log(result.response.text());
+    return result.response.text();
   }
   
   export default run;
